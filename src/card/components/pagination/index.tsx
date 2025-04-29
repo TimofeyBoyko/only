@@ -1,3 +1,5 @@
+import { useDeviceContext } from "../../../context/deviceContext";
+
 import { TPaginationProps } from "./Pagination.types";
 import {
   PaginationContainer,
@@ -9,6 +11,8 @@ import {
 import NavigationButton from "../navigation-button";
 
 const Pagination = ({ selectedItemId, items, setSelectedDotId }: TPaginationProps) => {
+  const { isMobile } = useDeviceContext();
+
   const handlePrevClick = () => {
     if (selectedItemId > 1) {
       setSelectedDotId(selectedItemId - 1);
@@ -58,7 +62,7 @@ const Pagination = ({ selectedItemId, items, setSelectedDotId }: TPaginationProp
           />
         </ButtonContainer>
       </div>
-      <DotsContainer>{renderDots()}</DotsContainer>{" "}
+      {isMobile ? <DotsContainer>{renderDots()}</DotsContainer> : null}
     </PaginationContainer>
   );
 };

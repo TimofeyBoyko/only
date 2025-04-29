@@ -2,12 +2,16 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isProduction = process.env.NODE_ENV === "production";
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: "/",
+    filename: isProduction ? "[name].[contenthash].js" : "bundle.js",
+    chunkFilename: isProduction ? "[name].[contenthash].js" : "[name].chunk.js",
+    publicPath: "",
+    clean: true,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
