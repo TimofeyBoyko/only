@@ -2,6 +2,10 @@
 
 ## Getting Started
 
+### Vercel link
+
+https://only-ruddy.vercel.app/
+
 ### Installation
 
 1. Clone the repository:

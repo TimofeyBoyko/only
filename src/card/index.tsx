@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useDeviceContext } from "../context/deviceContext";
 
@@ -24,6 +24,10 @@ const Card = ({ data }: CardProps) => {
   const [isRotation, setIsRotation] = useState(false);
 
   const { isMobile } = useDeviceContext();
+
+  useEffect(() => {
+    if (isMobile) setIsRotation(false);
+  }, [isMobile]);
 
   return (
     <StyledCard>
